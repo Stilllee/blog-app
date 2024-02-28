@@ -1,16 +1,96 @@
+import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
+import { app } from "firebaseApp";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 export default function SignUpForm() {
+  const [error, setError] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const auth = getAuth(app);
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      toast.success("회원가입에 성공했습니다.");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error?.code);
+    }
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = e;
+
+    if (name === "email") {
+      setEmail(value);
+
+      const validRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/;
+
+      if (!value?.match(validRegex)) {
+        setError("이메일 형식이 올바르지 않습니다.");
+      } else {
+        setError("");
+      }
+    }
+
+    if (name === "password") {
+      setPassword(value);
+
+      if (value?.length < 8) {
+        setError("비밀번호는 8자리 이상으로 입력해주세요.");
+      } else if (passwordConfirm?.length > 0 && value !== passwordConfirm) {
+        setError("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+      } else {
+        setError("");
+      }
+    }
+
+    if (name === "password_confirm") {
+      setPasswordConfirm(value);
+
+      if (value?.length < 8) {
+        setError("비밀번호는 8자리 이상으로 입력해주세요.");
+      } else if (value !== password) {
+        setError("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+      } else {
+        setError("");
+      }
+    }
+  };
+
   return (
-    <form action="/post" method="POST" className="form form--lg">
+    <form onSubmit={onSubmit} className="form form--lg">
       <h1 className="form__title">회원가입</h1>
       <fieldset className="form__block">
         <label htmlFor="email">이메일</label>
-        <input type="email" name="email" id="email" required />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          onChange={onChange}
+          value={email}
+        />
       </fieldset>
       <fieldset className="form__block">
         <label htmlFor="password">비밀번호</label>
-        <input type="password" name="password" id="password" required />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          onChange={onChange}
+          value={password}
+        />
       </fieldset>
       <fieldset className="form__block">
         <label htmlFor="password_confirm">비밀번호 확인</label>
@@ -19,8 +99,13 @@ export default function SignUpForm() {
           name="password_confirm"
           id="password_confirm"
           required
+          onChange={onChange}
+          value={passwordConfirm}
         />
       </fieldset>
+      <div className="form__block">
+        {error && error?.length > 0 && <p className="form__error">{error}</p>}
+      </div>
       <div className="form__block">
         <p>
           계정이 이미 있으신가요?{" "}
@@ -30,7 +115,12 @@ export default function SignUpForm() {
         </p>
       </div>
       <div className="form__block">
-        <input type="submit" value="회원가입" className="form__btn--submit" />
+        <input
+          type="submit"
+          value="회원가입"
+          className="form__btn--submit"
+          disabled={error?.length > 0}
+        />
       </div>
     </form>
   );
