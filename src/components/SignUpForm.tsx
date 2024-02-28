@@ -46,7 +46,7 @@ export default function SignUpForm() {
       setPassword(value);
 
       if (value?.length < 8) {
-        setError("비밀번호는 8자리 이상으로 입력해주세요.");
+        setError("비밀번호는 8자리 이상 입력해주세요.");
       } else if (passwordConfirm?.length > 0 && value !== passwordConfirm) {
         setError("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
       } else {
