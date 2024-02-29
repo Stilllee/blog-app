@@ -1,4 +1,5 @@
 import { initializeApp, FirebaseApp, getApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 // initializeApp : Firebase 앱을 초기화하는 데 사용
 // FirebaseApp, getApp : Firebase 앱 인스턴스를 관리하는 데 사용
 
@@ -43,5 +44,7 @@ try {
  */
 const firebase = initializeApp(firebaseConfig);
 // initializeApp 함수를 사용하여 Firebase 앱을 초기화. firebaseConfig에 정의된 설정을 사용
+
+export const db = getFirestore(app);
 
 export default firebase;
