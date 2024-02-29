@@ -1,4 +1,7 @@
-import { useState } from "react";
+import AuthContext from "context/AuthContext";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "firebaseApp";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface PostListProps {
@@ -7,8 +10,32 @@ interface PostListProps {
 
 type TabType = "all" | "my";
 
+interface PostProps {
+  id: string;
+  title: string;
+  email: string;
+  summary: string;
+  content: string;
+  createAt: string;
+}
+
 export default function PostList({ hasNavigation = true }: PostListProps) {
   const [activeTab, setActiveTab] = useState<TabType>("all");
+  const [posts, setPosts] = useState<PostProps[]>([]);
+
+  const { user } = useContext(AuthContext);
+
+  const getPosts = async () => {
+    const datas = await getDocs(collection(db, "posts"));
+    datas.forEach((doc) => {
+      const dataObj = { ...doc.data(), id: doc.id };
+      setPosts((prev) => [...prev, dataObj as PostProps]);
+    });
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <>
@@ -31,29 +58,31 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
         </nav>
       )}
       <section className="post__list">
-        {[...Array(10)].map((e, index) => (
-          <article key={index} className="post__box">
-            <Link to={`/posts/${index}`}>
-              <div className="post__profile-box">
-                <div className="post__profile" />
-                <div className="post__author-name">계정이름</div>
-                <div className="post__date">2024.02.26</div>
-              </div>
-              <div className="post__title">게시글 {index}</div>
-              <div className="post__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Obcaecati sint porro dolore dolor labore voluptatum dignissimos
-                adipisci magni repellat recusandae illum, nulla odio
-                exercitationem, consequatur explicabo ad, repudiandae molestiae
-                facere.
-              </div>
-              <div className="post__utils-box">
-                <div className="post__delete">삭제</div>
-                <div className="post__edit">수정</div>
-              </div>
-            </Link>
-          </article>
-        ))}
+        {posts?.length > 0 ? (
+          posts.map((post, index) => (
+            <article key={post?.id} className="post__box">
+              <Link to={`/posts/${post?.id}`}>
+                <div className="post__profile-box">
+                  <div className="post__profile" />
+                  <div className="post__author-name">{post?.email}</div>
+                  <div className="post__date">{post?.createAt}</div>
+                </div>
+                <div className="post__title">{post?.title}</div>
+                <div className="post__text">{post?.content}</div>
+              </Link>
+              {post?.email === user?.email && (
+                <div className="post__utils-box">
+                  <div className="post__delete">삭제</div>
+                  <div className="post__edit">
+                    <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+                  </div>
+                </div>
+              )}
+            </article>
+          ))
+        ) : (
+          <div className="post__no-post">게시글이 없습니다.</div>
+        )}
       </section>
     </>
   );
