@@ -1,5 +1,12 @@
 import AuthContext from "context/AuthContext";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "firebaseApp";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,7 +24,7 @@ export interface PostProps {
   email: string;
   summary: string;
   content: string;
-  createAt: string;
+  createdAt: string;
   updatedAt?: string;
   uid: string;
 }
@@ -29,7 +36,9 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
   const { user } = useContext(AuthContext);
 
   const getPosts = async () => {
-    const datas = await getDocs(collection(db, "posts"));
+    let postsRef = collection(db, "posts");
+    let postsQuery = query(postsRef, orderBy("createdAt", "asc"));
+    const datas = await getDocs(postsQuery);
     setPosts([]);
     datas.forEach((doc) => {
       const dataObj = { ...doc.data(), id: doc.id };
@@ -79,7 +88,7 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
                 <div className="post__profile-box">
                   <div className="post__profile" />
                   <div className="post__author-name">{post?.email}</div>
-                  <div className="post__date">{post?.createAt}</div>
+                  <div className="post__date">{post?.createdAt}</div>
                 </div>
                 <div className="post__title">{post?.title}</div>
                 <div className="post__text">{post?.summary}</div>
