@@ -110,7 +110,7 @@ export default function SignUpForm() {
         {error && error?.length > 0 && <p className="form__error">{error}</p>}
       </div>
       <div className="form__block">
-        <p>
+        <p className="form__info">
           계정이 이미 있으신가요?{" "}
           <Link to="/login" className="form__link">
             로그인하기

@@ -85,7 +85,7 @@ export default function LoginForm() {
         {error && error?.length > 0 && <p className="form__error">{error}</p>}
       </div>
       <div className="form__block">
-        <p>
+        <p className="form__info">
           계정이 없으신가요?{" "}
           <Link to="/signup" className="form__link">
             회원가입하기

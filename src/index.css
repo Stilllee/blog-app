@@ -67,6 +67,9 @@ footer a:hover {
 .footer__theme-btn {
   border: none;
   cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  background-color: transparent;
 }
 
 /* post navigation */
@@ -205,7 +208,7 @@ footer a:hover {
 .post__category {
   color: gray;
   border: 1px solid lightgray;
-  backgroud: #f2f2f2;
+  background-color: #f2f2f2;
   padding: 0px 4px;
   border-radius: 10px;
   font-size: 12px;
@@ -396,6 +399,7 @@ input:checked + .carousel__slide-container .nav label {
   max-width: 680px;
   padding: 20px;
   margin-top: 20px;
+  min-height: 80vh;
 }
 
 .form input {
@@ -409,7 +413,7 @@ input:checked + .carousel__slide-container .nav label {
 }
 
 .form textarea {
-  min-height: 400px;
+  min-height: 300px;
   padding: 10px 10px;
   font-size: 16px;
   line-height: 1.5;
@@ -475,7 +479,7 @@ input:checked + .carousel__slide-container .nav label {
 }
 
 .form__error {
-  color: red;
+  color: tomato;
 }
 
 .form select {
@@ -502,4 +506,47 @@ input:checked + .carousel__slide-container .nav label {
   border-radius: 50%;
   z-index: 9999;
   animation: rotation 1s linear infinite;
+}
+
+/* dark mode */
+.light {
+  transition: all 0.25s linear;
+  background-color: white;
+}
+
+.dark {
+  transition: all 0.25s linear;
+  background-color: #1e2937;
+  min-height: 100vh;
+}
+
+.dark a,
+.dark .form label,
+.dark .post__delete,
+.dark .post__edit,
+.dark .post__navigation--active,
+.dark .post__author-name,
+.dark .post__title,
+.dark .profile__email,
+.dark .profile__name,
+.dark .form__title,
+.dark footer button {
+  color: white;
+}
+
+.dark a:focus,
+.dark a:hover,
+.dark footer button:focus,
+.dark footer button:hover,
+.dark .post__delete:focus,
+.dark .post__delete:hover,
+.dark .post__text,
+.dark .post__date,
+.dark .form__info,
+.dark .post__no-post {
+  color: lightgray;
+}
+
+.dark footer {
+  background-color: #111827;
 }
