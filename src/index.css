@@ -64,6 +64,11 @@ footer a:hover {
   color: black;
 }
 
+.footer__theme-btn {
+  border: none;
+  cursor: pointer;
+}
+
 /* post navigation */
 .post__navigation {
   display: flex;
