@@ -508,6 +508,101 @@ input:checked + .carousel__slide-container .nav label {
   animation: rotation 1s linear infinite;
 }
 
+/* comments */
+.comments {
+  width: 100%;
+}
+
+.comments__form {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.comments__form textarea {
+  margin-top: 10px;
+  min-height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  border: 1px solid lightgray;
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  box-sizing: border-box;
+}
+
+.comments__form .form__block {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.comments__form .form__btn-submit {
+  width: 100px;
+  height: 36px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.form__block-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.comments__form .form__btn-submit:focus,
+.comments__form .form__btn-submit:hover {
+  background-color: #1945a4;
+}
+
+.comments__list {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.comment__box {
+  padding: 12px 40px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.comment__profile-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.comment__email {
+  font-weight: 500;
+}
+
+.comment__date {
+  color: gray;
+}
+
+.comment__delete {
+  color: gray;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comment__delete:focus,
+.comment__delete:hover {
+  color: black;
+}
+
+comment__text {
+  font-size: 14px;
+  padding-top: 4px;
+}
+
 /* dark mode */
 .light {
   transition: all 0.25s linear;
@@ -521,7 +616,7 @@ input:checked + .carousel__slide-container .nav label {
 }
 
 .dark a,
-.dark .form label,
+.dark .form__block label,
 .dark .post__delete,
 .dark .post__edit,
 .dark .post__navigation--active,
@@ -530,7 +625,8 @@ input:checked + .carousel__slide-container .nav label {
 .dark .profile__email,
 .dark .profile__name,
 .dark .form__title,
-.dark footer button {
+.dark footer button,
+.dark .comments__list {
   color: white;
 }
 
@@ -543,10 +639,18 @@ input:checked + .carousel__slide-container .nav label {
 .dark .post__text,
 .dark .post__date,
 .dark .form__info,
-.dark .post__no-post {
+.dark .post__no-post,
+.dark .comment__date,
+.dark .comment__delete {
   color: lightgray;
 }
 
-.dark footer {
+.dark .comment__delete:focus,
+.dark .comment__delete:hover {
+  color: white;
+}
+
+.dark footer,
+.dark header {
   background-color: #111827;
 }
