@@ -132,7 +132,7 @@ export default function PostForm() {
         >
           <option value="">카테고리를 선택해주세요</option>
           {CATEGORIES?.map((category) => (
-            <option value={category} id={category}>
+            <option key={category} value={category} id={category}>
               {category}
             </option>
           ))}
