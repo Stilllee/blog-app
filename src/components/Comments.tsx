@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { PostProps } from "./PostList";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "firebaseApp";
+import AuthContext from "context/AuthContext";
+import { toast } from "react-toastify";
 
 const COMMENTS = [
   {
@@ -26,21 +31,26 @@ const COMMENTS = [
     createdAt: "2024-03-09",
   },
   {
-    id: 4,
+    id: 5,
     email: "test@email.com",
     content: "댓글 4",
     createdAt: "2024-03-10",
   },
   {
-    id: 5,
+    id: 6,
     email: "test@email.com",
     content: "댓글 5",
     createdAt: "2024-03-11",
   },
 ];
 
-export default function Comments() {
+interface CommentsProps {
+  post: PostProps;
+}
+
+export default function Comments({ post }: CommentsProps) {
   const [comment, setComment] = useState("");
+  const { user } = useContext(AuthContext);
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const {
@@ -52,9 +62,46 @@ export default function Comments() {
     }
   };
 
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      if (post && post?.id) {
+        const postRef = doc(db, "posts", post.id);
+
+        if (user?.uid) {
+          const commentObj = {
+            content: comment,
+            uid: user.uid,
+            email: user.email,
+            createdAt: new Date()?.toLocaleDateString("ko", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            }),
+          };
+
+          await updateDoc(postRef, {
+            comments: arrayUnion(commentObj),
+            updateDated: new Date()?.toLocaleDateString("ko", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            }),
+          });
+        }
+      }
+      toast.success("댓글을 생성했습니다.");
+      setComment("");
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error?.code);
+    }
+  };
+
   return (
     <div className="comments">
-      <form action="" className="comments__form">
+      <form action="" className="comments__form" onSubmit={onSubmit}>
         <div className="form__block">
           <label htmlFor="comment">댓글 입력</label>
           <textarea
