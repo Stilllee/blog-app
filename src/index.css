@@ -598,7 +598,7 @@ input:checked + .carousel__slide-container .nav label {
   color: black;
 }
 
-comment__text {
+.comment__text {
   font-size: 14px;
   padding-top: 4px;
 }
