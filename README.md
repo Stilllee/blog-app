@@ -9,12 +9,13 @@
 - [기술 스택](#기술-스택)
 - [배포](#배포)
 - [설치 및 실행](#설치-및-실행)
-- [구현 기능](#구현-기능)
+- [구현 내용](#구현-내용)
   <br>
 
 ## 프로젝트 정보
 
-React와 Firebase를 이용한 블로그 프로젝트입니다. 이 프로젝트는 최신 웹 개발 기술을 실제로 적용하고 깊이 있게 이해하기 위해 구축되었습니다.
+React와 Firebase를 이용한 블로그 프로젝트입니다. <br>
+이 프로젝트는 최신 웹 개발 기술을 실제로 적용하고 깊이 있게 이해하기 위해 구축되었습니다.
 
 ### 프로젝트 개요
 
@@ -37,6 +38,8 @@ React와 Firebase를 이용한 블로그 프로젝트입니다. 이 프로젝트
 - 다크모드
 - 카테고리별 글 목록 및 사용자별 작성 글 관리
 
+<br>
+
 ## 기술 스택
 
 <div>
@@ -45,7 +48,8 @@ React와 Firebase를 이용한 블로그 프로젝트입니다. 이 프로젝트
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white" />
   <img alt="css3" src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=css3&logoColor=white" />
   <img alt="Firebase" src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=white" />
-</div> 
+</div>
+
 <br>
 
 ## 설치 및 실행
@@ -61,7 +65,6 @@ yarn start
 
 - Firebase CLI 사용
 - 배포 링크 : [React Blog](https://react-blog-9837c.web.app/)
-  <br>
 
 <br>
 
@@ -69,7 +72,7 @@ yarn start
 
 <br>
 
-## 구현 기능 상세
+## 구현 내용
 
 ### 1. 로그인 / 회원가입 페이지
 
@@ -249,5 +252,7 @@ function App() {
 │   │   └── signup
 │   │       └── SignupPage.tsx      # 회원가입 페이지
 ```
+
+<br>
 
 관련 강의: [fastcampus-react-blog](https://github.com/jen-frontend/fastcampus-react-blog)
