@@ -69,49 +69,60 @@ yarn start
 <br>
 
 ## 데모 영상
+[프로젝트 데모 영상 보기](https://youtu.be/_GY_noqN1zY)
 
 <br>
 
 ## 구현 내용
 
 ### 1. 로그인 / 회원가입 페이지
-
+![image](https://github.com/Stilllee/blog-app/assets/108785772/38c48b5d-d20e-43cc-9076-cd7984f58138)
+![chrome_IiwazVtmPc](https://github.com/Stilllee/blog-app/assets/108785772/b4d4eb85-b06b-455b-9d79-c8797b16e511)
 - Firebase Auth를 사용하여 사용자 인증 기능을 구현했습니다.
 - 이메일과 비밀번호를 통한 로그인 및 회원가입 기능을 제공합니다.
+- 회원가입시에는 별도의 과정없이 바로 로그인됩니다.
+
+<br>
 
 ### 2. 메인 페이지
-
+![chrome_cYqnv8Gc0S](https://github.com/Stilllee/blog-app/assets/108785772/fa4abe3a-b63c-427b-bdac-13e03cf855ee)
 - 글 목록과 함께 캐러셀 기능으로 이미지를 보여줍니다.
 
-### 3. 글 목록 페이지
+<br>
 
-- Firebase의 Firestore를 이용하여 작성된 글의 목록을 실시간으로 보여줍니다.
-- 게시글마다 작성자, 작성일, 제목, 요약 내용 등이 표시됩니다.
-
-- 각 글을 선택하면 해당 글의 상세페이지로 이동합니다.
-
-### 4. 글 상세 페이지
-
-- 선택된 글의 제목, 내용, 작성자, 작성일, 카테고리 등의 세부 정보를 표시합니다.
-- 댓글 기능을 통해 사용자들이 글에 대한 의견을 남길 수 있습니다.
-
-### 5. 글 작성 / 수정 페이지
-
+### 3. 글 목록
+![chrome_lWDZsM1oGs](https://github.com/Stilllee/blog-app/시글 작성 / 수정 페이지
+![chrome_wuhqnqNnCw](https://github.com/Stilllee/blog-app/assets/108785772/ac351bdd-89eb-4ca4-a6a2-86a868a8f87e)
 - `PostForm` 컴포넌트를 통해 글을 작성하거나 수정할 수 있습니다.
 - - 작성 : 헤더의 '글쓰기' 버튼을 통해 글 작성 페이지(`PostNewPage`)로 이동할 수 있습니다.
 - - 수정 : 메인 페이지, 글 상세 페이지, 프로필 페이지에서 '수정' 버튼을 통해 글 수정 페이지(`PostEditPage`)로 이동할 수 있습니다.
 
-### 6. 카테고리 메뉴
+<br>
 
-- 카테고리별로 글을 분류하고, 해당 카테고리의 글 목록을 볼 수 있습니다.
-- 내가 작성한 글 목록만 볼 수 있는 메뉴도 제공합니다.
+### 7. 게시글 및 댓글 삭제 기능
+![chrome_iNenfZV6HA](https://github.com/Stilllee/blog-app/assets/108785772/dd8a0a2b-b0f9-43a3-8488-17efac60eb5d)
+![chrome_8vdf3RqrSs](https://github.com/Stilllee/blog-app/assets/108785772/c1b05f64-81d3-433a-8ba8-b66123d61690)
+- 글 목록과 상세 페이지, 프로필페이지에서 '삭제' 버튼을 통해 글을 삭제할 수 있습니다.
+- 댓글의 '삭제' 버튼을 통해 댓글을 삭제할 수 있습니다.
+- 삭제는 실시간으로 반영되며, 삭제 권한은 작성자에게만 부여됩니다.
 
-### 7. 사용자 프로필 페이지
+<br>
 
+### 8. 사용자 프로필 페이지
+![image](https://github.com/Stilllee/blog-app/assets/108785772/a60b5db9-3ce9-4f76-a0b1-c182a9848b8c)
+![chrome_E6OGGtN1rY](https://github.com/Stilllee/blog-app/assets/108785772/1cdd459a-71d5-4d7c-a644-698667aecf44)
 - 사용자의 프로필 정보 및 작성한 글 목록을 보여줍니다.
 - 로그아웃 기능을 제공합니다.
 
-### 8. Context API로 상태관리
+<br>
+
+### 9. 다크모드
+![chrome_33hvOALzV7](https://github.com/Stilllee/blog-app/assets/108785772/98035b79-2a40-4e85-b7c0-32948c58c018)
+- 푸터의 테마 변경 버튼을 통해 다크모드로 전환할 수 있습니다.
+
+<br>
+
+### 9. Context API로 상태관리
 
 React의 Context API를 사용하여 애플리케이션의 상태를 관리합니다.
 
@@ -255,4 +266,4 @@ function App() {
 
 <br>
 
-관련 강의: [fastcampus-react-blog](https://github.com/jen-frontend/fastcampus-react-blog)
+참고 강의: [fastcampus-react-blog](https://github.com/jen-frontend/fastcampus-react-blog)
