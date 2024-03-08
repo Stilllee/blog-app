@@ -1,4 +1,5 @@
-# Blog
+# React Blog
+![image](https://github.com/Stilllee/blog-app/assets/108785772/37485f61-264f-4597-a19c-ba45d0bf97ea)
 
 <br>
 
@@ -9,6 +10,7 @@
 - [기술 스택](#기술-스택)
 - [배포](#배포)
 - [설치 및 실행](#설치-및-실행)
+- [데모 및 테스트 계정](#데모-및-테스트-계정)
 - [구현 내용](#구현-내용)
   <br>
 
@@ -68,8 +70,11 @@ yarn start
 
 <br>
 
-## 데모 영상
-[프로젝트 데모 영상 보기](https://youtu.be/_GY_noqN1zY)
+## 데모 및 테스트 계정
+- [프로젝트 데모 영상 보기](https://youtu.be/_GY_noqN1zY)
+- 테스트 계정
+  - 이메일: test@email.com
+  - 비밀번호: 12345678
 
 <br>
 
