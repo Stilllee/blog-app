@@ -96,7 +96,6 @@ yarn start
 <br>
 
 ### 3. 글 목록
-![chrome_lWDZsM1oGs](https://github.com/Stilllee/blog-app/시글 작성 / 수정 페이지
 ![chrome_wuhqnqNnCw](https://github.com/Stilllee/blog-app/assets/108785772/ac351bdd-89eb-4ca4-a6a2-86a868a8f87e)
 - `PostForm` 컴포넌트를 통해 글을 작성하거나 수정할 수 있습니다.
 - - 작성 : 헤더의 '글쓰기' 버튼을 통해 글 작성 페이지(`PostNewPage`)로 이동할 수 있습니다.
