@@ -104,7 +104,7 @@ yarn start
 
 <br>
 
-### 7. 게시글 및 댓글 삭제 기능
+### 4. 게시글 및 댓글 삭제 기능
 ![chrome_iNenfZV6HA](https://github.com/Stilllee/blog-app/assets/108785772/dd8a0a2b-b0f9-43a3-8488-17efac60eb5d)
 ![chrome_8vdf3RqrSs](https://github.com/Stilllee/blog-app/assets/108785772/c1b05f64-81d3-433a-8ba8-b66123d61690)
 - 글 목록과 상세 페이지, 프로필페이지에서 '삭제' 버튼을 통해 글을 삭제할 수 있습니다.
@@ -113,7 +113,7 @@ yarn start
 
 <br>
 
-### 8. 사용자 프로필 페이지
+### 5. 사용자 프로필 페이지
 ![image](https://github.com/Stilllee/blog-app/assets/108785772/a60b5db9-3ce9-4f76-a0b1-c182a9848b8c)
 ![chrome_E6OGGtN1rY](https://github.com/Stilllee/blog-app/assets/108785772/1cdd459a-71d5-4d7c-a644-698667aecf44)
 - 사용자의 프로필 정보 및 작성한 글 목록을 보여줍니다.
@@ -121,13 +121,13 @@ yarn start
 
 <br>
 
-### 9. 다크모드
+### 6. 다크모드
 ![chrome_33hvOALzV7](https://github.com/Stilllee/blog-app/assets/108785772/98035b79-2a40-4e85-b7c0-32948c58c018)
 - 푸터의 테마 변경 버튼을 통해 다크모드로 전환할 수 있습니다.
 
 <br>
 
-### 9. Context API로 상태관리
+### 7. Context API로 상태관리
 
 React의 Context API를 사용하여 애플리케이션의 상태를 관리합니다.
 
